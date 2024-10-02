@@ -34,7 +34,7 @@ O jogo foi projetado para uma ampla gama de jogadores, desde alunos do ensino fu
 
 ## Captura de Tela
 
-![NASA Earth Image](https://www.nasa.gov/sites/default/files/thumbnails/image/iss065e138280.jpg)
+![NASA Earth Image](https://t0.gstatic.com/images?q=tbn:ANd9GcQ9u48pu-6IB2FnnYl_H-15le_g8Dkt5d5RN-VWiWIl_-dyJdaa)
 *Fonte: [NASA](https://www.nasa.gov/image-feature/fresh-perspective-earths-limb-and-atmosphere)*
 
 ## Tecnologias Utilizadas
