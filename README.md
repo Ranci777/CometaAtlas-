@@ -44,7 +44,7 @@ O jogo foi projetado para uma ampla gama de jogadores, desde alunos do ensino fu
 - **Banco de dados** para armazenamento de informações e estatísticas do jogo.
 
 ## Como Contribuir
-Sinta-se à vontade para enviar sugestões ou contribuições para melhorar o projeto. Basta abrir um Pull Request ou entrar em contato pelo e-mail fornecido.
+Sinta-se à vontade para enviar sugestões ou contribuições para melhorar o projeto. Basta abrir um Pull Request.
 
 ## Licença
 Este projeto está licenciado sob a licença [MIT](LICENSE).
