@@ -32,7 +32,7 @@ A NASA oferece uma variedade de imagens, dados científicos e recursos educacion
 ## Público-Alvo
 O jogo foi projetado para uma ampla gama de jogadores, desde alunos do ensino fundamental até adultos, e pode ser utilizado em ambientes formais e informais de educação. Seu foco é tanto local quanto global, incentivando os jogadores a se envolverem em suas comunidades e compreenderem os desafios ambientais em nível global.
 
-
+//    ## EM CONJUNTO COM:
 ![NASA Earth Image](https://t0.gstatic.com/images?q=tbn:ANd9GcQ9u48pu-6IB2FnnYl_H-15le_g8Dkt5d5RN-VWiWIl_-dyJdaa)
 *Fonte: [NASA](https://www.nasa.gov/image-feature/fresh-perspective-earths-limb-and-atmosphere)*
 
