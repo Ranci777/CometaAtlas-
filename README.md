@@ -2,7 +2,7 @@
                      Systems developed for the NASA SPACE APPS - CHALLENGE "GLOBE Protocol Games" project, as a way to solve the challenge and as a global community project together with NASA, and its department of experts.
 
 
-# Environmental Awareness Game - GLOBE Program Integration
+## Environmental Awareness Challenge - GLOBE Program Integration
 
 ## Descrição do Projeto
 Este projeto visa criar um jogo educacional que integra os **protocolos do Programa GLOBE** para ajudar os jogadores a entender e se envolver com seu ambiente local ou global, desenvolvendo sua conscientização ambiental. O jogo permite que os jogadores explorem problemas ambientais reais, participem de atividades interativas de coleta de dados e proponham soluções para ajudar a resolver questões ambientais locais e globais.
