@@ -50,4 +50,4 @@ O jogo foi projetado para uma ampla gama de jogadores, desde alunos do ensino fu
 Sinta-se à vontade para enviar sugestões ou contribuições para melhorar o projeto. Basta abrir um Pull Request.
 
 ## Licença
-Este projeto está licenciado sob a licença [MIT](LICENSE).
+Este projeto está licenciado sob a licença [MIT](https://www.mit.edu/~amini/LICENSE.md).
