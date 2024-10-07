@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOBE Space Explorer - Ambiente e Impacto</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        #info, #question {
+            text-align: center;
+            padding: 20px;
+        }
+        #question {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="info">
+        <h1>GLOBE Space Explorer - Ambiente e Impacto</h1>
+        <p>Use as setas para mover sua nave. Responda às perguntas ambientais para avançar!</p>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="question">
+        <h2 id="questionText"></h2>
+        <button onclick="checkAnswer(0)">Resposta 1</button>
+        <button onclick="checkAnswer(1)">Resposta 2</button>
+        <button onclick="checkAnswer(2)">Resposta 3</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Nave espacial
+        const spaceship = {
+            x: canvas.width / 2 - 25,
+            y: canvas.height - 100,
+            width: 50,
+            height: 50,
+            speed: 5
+        };
+
+        // Estrelas e dados espaciais
+        const stars = [];
+        const starCount = 100;
+
+        for (let i = 0; i < starCount; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 1,
+                speed: Math.random() * 1 + 0.5
+            });
+        }
+
+        // Perguntas sobre o ambiente
+        const questions = [
+            {
+                question: "Qual é o impacto da poluição no solo?",
+                options: ["Destruição da vida no solo", "Aumento da vegetação", "Nenhum impacto"],
+                correct: 0,
+                explanation: "A poluição do solo pode destruir micro-organismos essenciais para o ecossistema."
+            },
+            {
+                question: "Como o dióxido de carbono impacta o ar?",
+                options: ["Aumenta o efeito estufa", "Reduz a temperatura", "Melhora a qualidade do ar"],
+                correct: 0,
+                explanation: "O dióxido de carbono contribui para o aquecimento global ao aumentar o efeito estufa."
+            },
+            {
+                question: "Qual é o efeito do derramamento de óleo na água?",
+                options: ["Aumenta a vida aquática", "Afeta a biodiversidade marinha", "Não afeta o ecossistema"],
+                correct: 1,
+                explanation: "Derramamentos de óleo podem ter efeitos devastadores sobre a biodiversidade marinha."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let questionElement = document.getElementById("question");
+        let questionTextElement = document.getElementById("questionText");
+
+        // Função para desenhar a nave
+        function drawSpaceship() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(spaceship.x, spaceship.y, spaceship.width, spaceship.height);
+        }
+
+        // Função para desenhar estrelas
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+            });
+        }
+
+        // Atualiza a posição das estrelas para dar a sensação de movimento
+        function updateStars() {
+            stars.forEach(star => {
+                star.y += star.speed;
+                if (star.y > canvas.height) {
+                    star.y = 0;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+        }
+
+        // Movimentação da nave
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && spaceship.x + spaceship.width < canvas.width) {
+                spaceship.x += spaceship.speed;
+            } else if (e.key === 'ArrowLeft' && spaceship.x > 0) {
+                spaceship.x -= spaceship.speed;
+            } else if (e.key === 'ArrowUp' && spaceship.y > 0) {
+                spaceship.y -= spaceship.speed;
+            } else if (e.key === 'ArrowDown' && spaceship.y + spaceship.height < canvas.height) {
+                spaceship.y += spaceship.speed;
+            }
+        });
+
+        // Mostra a pergunta atual
+        function showQuestion() {
+            questionTextElement.textContent = questions[currentQuestionIndex].question;
+            const buttons = questionElement.querySelectorAll("button");
+            buttons.forEach((button, index) => {
+                button.textContent = questions[currentQuestionIndex].options[index];
+            });
+            questionElement.style.display = "block";
+        }
+
+        // Verifica a resposta do jogador
+        function checkAnswer(selectedOption) {
+            const correctAnswer = questions[currentQuestionIndex].correct;
+            if (selectedOption === correctAnswer) {
+                alert("Correto! " + questions[currentQuestionIndex].explanation);
+                currentQuestionIndex++;
+                if (currentQuestionIndex >= questions.length) {
+                    currentQuestionIndex = 0;
+                }
+                questionElement.style.display = "none";
+                gameLoop();
+            } else {
+                alert("Errado! " + questions[currentQuestionIndex].explanation);
+            }
+        }
+
+        // Loop principal do jogo
+        function gameLoop() {
+            drawStars();
+            updateStars();
+            drawSpaceship();
+
+            if (currentQuestionIndex < questions.length) {
+                setTimeout(showQuestion, 2000); // Mostra a pergunta a cada 2 segundos
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Inicia o jogo
+        gameLoop();
+    </script>
+
+</body>
+</html>
